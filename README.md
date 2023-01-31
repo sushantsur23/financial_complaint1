@@ -28,3 +28,16 @@ datasource_url.
 Data Ingestion Artifact will contain feature_store_path, metadata_file_path and download_dir.
 
 In Training pipeline config we will get the data ingestion configuration as we define the entity, in the entity we have data ingestion config,
+
+### Data Validation Component 
+Training pipeline config will have will have get_data_validation_config 
+Data validation config will have accepted_data_dir, rejected_data_dir and file_name depending on the process if the file is accepted or rejected.
+Process :- 
+1) Read data from the Feature Store
+2) Dropping unwanted rows.
+3) Checking if is_required clumn present
+4) Finally prepare the data_validation_artifact containing accepted_file_path and rejected_dir. 
+5) Return the data validation artifact.
+
+#### Structure of Data Validation Artifact
+Data_Validation_Artifact is divided into timestamps. Under timestamps we have accepted_data and rejected_data.
